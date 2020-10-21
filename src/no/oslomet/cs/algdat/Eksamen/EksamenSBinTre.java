@@ -113,8 +113,33 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+    // må her bruke this. for å kalle på metodene siden verken metoden er statisk eller treet blir sendt med som parameter.
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Objects.requireNonNull(verdi, "Null verdi ikke tillat");
+        if(!this.inneholder(verdi)) {
+            return 0;
+        }
+        Node<T> p = rot;
+        int count = 0;
+        /*while (p != null) {
+            if (this.inneholder(verdi)) {
+                count++;
+            }
+            int cmp = comp.compare(verdi, p.verdi);
+            if (cmp < 0) p = p.venstre;
+            else if (cmp > 0) p = p.høyre;
+        }*/
+        //return count;
+
+
+        /////////////////////////////////////////////
+        count = 0;
+        for (int i = 0; i < antall; i++) {
+            if (this.inneholder(verdi)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public void nullstill() {
