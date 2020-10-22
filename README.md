@@ -20,3 +20,5 @@ Vi har brukt git til å dokumentere arbeidet vårt. Jeg har 16 commits totalt, o
 * Oppgave 2: Løste ved å bruke en while loop lik som den i inneholder, bare at i "else" statementet så plusser den på <br/>
 1 på count variabelen og går videre til høyre for å finne flere frem til den ikke lenger finner fler. <br/> 
 Går til høyre fordi den leter etter duplicates og tall som er større eller lik verdi ligger alltid til høyre
+* Oppgave 3: <br/>førstePostorden ble løst ved bruk av rekursjon, denne sender med enten p.høyre eller p.venstre ettersom
+hvilke av de som er NULL eller ikke. <br/>nestePostorden ble løst ved hjelp av if-setninger som oppfyller sjekklisten under punkt 5.1.7 i kompendiet.
