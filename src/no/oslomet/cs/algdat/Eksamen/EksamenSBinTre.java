@@ -105,13 +105,65 @@ public class EksamenSBinTre<T> {
         antall++;                                // én verdi mer i treet
         return true;
     }
-
+    // kode kopiert fra kompendie, seksjon 5.2.8 d)
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (verdi == null) return false;  // treet har ingen nullverdier
+
+        Node<T> p = rot, q = null;   // q skal være forelder til p
+
+        while (p != null)            // leter etter verdi
+        {
+            int cmp = comp.compare(verdi,p.verdi);      // sammenligner
+            if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
+            else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
+            else break;    // den søkte verdien ligger i p
+        }
+        if (p == null) return false;   // finner ikke verdi
+
+        if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
+        {
+            Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
+            if (p == rot) {
+                if (b != null) b.forelder = null;
+                rot = b;
+            }
+            else if (p == q.venstre) {
+                q.venstre = b;
+                if (b != null) b.forelder = q;             // legge til riktig foreldre peker
+            }
+            else {
+                q.høyre = b;
+                if (b != null) b.forelder = q;             // legge til riktig foreldre peker
+            }
+        }
+        else  // Tilfelle 3)
+        {
+            Node<T> s = p, r = p.høyre;   // finner neste i inorden
+            while (r.venstre != null)
+            {
+                s = r;    // s er forelder til r
+                r = r.venstre;
+            }
+
+            p.verdi = r.verdi;   // kopierer verdien i r til p
+
+            if (s != p) s.venstre = r.høyre;
+            else s.høyre = r.høyre;
+        }
+
+        antall--;   // det er nå én node mindre i treet
+        return true;
     }
 
     public int fjernAlle(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (tom()) return 0; // Hvis treet er tomt, skal 0 returneres.
+        int antallForekomster = antall(verdi);
+        int antallSlettede = 0;
+        while (antallSlettede < antallForekomster) {
+            if (fjern(verdi)) antallSlettede++;
+        }
+
+        return antallSlettede;
     }
 
     // må her bruke this. for å kalle på metodene siden verken metoden er statisk eller treet blir sendt med som parameter.
@@ -170,7 +222,7 @@ public class EksamenSBinTre<T> {
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {

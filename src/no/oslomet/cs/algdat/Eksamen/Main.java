@@ -28,5 +28,21 @@ public class Main {
         //System.out.println("Inneholder :" + treChar.antall('D'));
         tre.nullstill();
         System.out.println(tre.toStringPostOrder());
+        /*Oppgave<Integer> k = new Oppgave<Integer>() {
+            @Override
+            public void utførOppgave(Integer integer) {
+
+            }
+        };
+        tre.postorden(k);*/
+        EksamenSBinTre<Integer> tre2 = new EksamenSBinTre<>(Comparator.naturalOrder());
+
+        int[] c = {1, 4, 1, 3, 1, 2, 1, 1};
+        for (int verdi : c) tre2.leggInn(verdi);
+        String s = tre2.toStringPostOrder();
+        System.out.println(s);
+        System.out.println(tre2.fjernAlle(1));
+        s = tre2.toStringPostOrder();
+        System.out.println(s);
     }
 }
