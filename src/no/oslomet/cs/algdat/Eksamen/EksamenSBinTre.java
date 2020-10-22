@@ -187,8 +187,32 @@ public class EksamenSBinTre<T> {
         return count;
     }
 
-    public void nullstill() {
+    /*public void nullstill() {
+        if (tom()) return;
+        if (antall == 1) {
+            fjern(rot.verdi);
+            return;
+        }
+        Node<T> current = førstePostorden(rot);
+        while (antall > 1) {
+            if(current == null) break;
+            Node <T> temp = nestePostorden(current);
+            if (fjern(current.verdi)) antall--;
+            current = temp;
+        }
+       // fjern(rot.verdi);
+    }*/
 
+    public void nullstill() {
+        if (tom()) return;
+        if (antall == 1) {
+            fjern(rot.verdi);
+            return;
+        }
+
+        Node<T> first = førstePostorden(rot);
+        fjernAlle(first.verdi);
+        nullstill();
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {

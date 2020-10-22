@@ -12,7 +12,7 @@ public class Main {
         System.out.println(test.antall());
         System.out.println(test2.antall());
         System.out.println(test3.antall());
-        Integer[] a = {4,7,2,9,4,10,8,7,4,6};
+        Integer[] a = {3,7,2,9,3,10,8,7,4,6};
         EksamenSBinTre<Integer> tre = new EksamenSBinTre<>(Comparator.naturalOrder());
         for (int verdi : a) tre.leggInn(verdi);
 
@@ -26,8 +26,9 @@ public class Main {
         EksamenSBinTre<Character> treChar = new EksamenSBinTre<>(Comparator.naturalOrder());
         for (char verdi : b) treChar.leggInn(verdi);
         //System.out.println("Inneholder :" + treChar.antall('D'));
-        tre.nullstill();
-        System.out.println(tre.toStringPostOrder());
+
+
+        //System.out.println(tre.toStringPostOrder());
         /*Oppgave<Integer> k = new Oppgave<Integer>() {
             @Override
             public void utførOppgave(Integer integer) {
@@ -44,5 +45,18 @@ public class Main {
         System.out.println(tre2.fjernAlle(1));
         s = tre2.toStringPostOrder();
         System.out.println(s);
+
+
+
+
+
+        EksamenSBinTre<Integer> tre3 = new EksamenSBinTre<>(Comparator.naturalOrder());
+
+        for (int verdi : a) tre3.leggInn(verdi);
+
+
+        System.out.println("før nullstill: "+tre.toStringPostOrder());
+        tre.nullstill();
+        System.out.println("etter nullstill: "+tre.toStringPostOrder());
     }
 }
