@@ -26,5 +26,7 @@ public class Main {
         EksamenSBinTre<Character> treChar = new EksamenSBinTre<>(Comparator.naturalOrder());
         for (char verdi : b) treChar.leggInn(verdi);
         //System.out.println("Inneholder :" + treChar.antall('D'));
+        tre.nullstill();
+        System.out.println(tre.toStringPostOrder());
     }
 }

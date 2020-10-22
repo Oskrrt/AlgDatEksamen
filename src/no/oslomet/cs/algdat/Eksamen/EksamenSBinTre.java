@@ -149,8 +149,24 @@ public class EksamenSBinTre<T> {
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException();
+        /* Kopiert inn sjekklisten fra kompendiet, denne ble fulgt under utvikling av metoden
+        1. Hvis p ikke har en forelder ( p er rotnoden), så er p den siste i postorden.
+        2. Hvis p er høyre barn til sin forelder f, er forelderen f den neste.
+        3. Hvis p er venstre barn til sin forelder f, gjelder:
+        3.1. Hvis p er enebarn (f.høyre er null), er forelderen f den neste.
+        3.2 .Hvis p ikke er enebarn (dvs. f.høyre er ikke null), så er den neste den noden som kommer først i postorden i subtreet med f.høyre som rot.*/
 
+        if (p.forelder == null) return null; // 1.
+        if (p == p.forelder.høyre) {
+            return p.forelder; // 2.
+        } else if (p == p.forelder.venstre) { // 3.
+            if (p.forelder.høyre == null) {
+                return p.forelder; // 3.1.
+            } else {
+                return førstePostorden(p.forelder.høyre); // 3.2.
+            }
+        }
+        return p;
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
