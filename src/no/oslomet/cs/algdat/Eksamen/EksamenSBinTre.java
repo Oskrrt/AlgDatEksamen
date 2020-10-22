@@ -68,6 +68,7 @@ public class EksamenSBinTre<T> {
         StringJoiner s = new StringJoiner(", ", "[", "]");
 
         Node<T> p = førstePostorden(rot); // går til den første i postorden
+
         while (p != null) {
             s.add(p.verdi.toString());
             p = nestePostorden(p);
@@ -120,23 +121,15 @@ public class EksamenSBinTre<T> {
             return 0;
         }
         Node<T> p = rot;
+
         int count = 0;
-        /*while (p != null) {
-            if (this.inneholder(verdi)) {
-                count++;
-            }
+        while (p != null) {
             int cmp = comp.compare(verdi, p.verdi);
             if (cmp < 0) p = p.venstre;
             else if (cmp > 0) p = p.høyre;
-        }*/
-        //return count;
-
-
-        /////////////////////////////////////////////
-        count = 0;
-        for (int i = 0; i < antall; i++) {
-            if (this.inneholder(verdi)) {
+            else {  // dersom den finner verdi plusser den på count og beveger seg til høyre
                 count++;
+                p = p.høyre;
             }
         }
         return count;
@@ -147,11 +140,17 @@ public class EksamenSBinTre<T> {
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (p.venstre != null) {
+            p = førstePostorden(p.venstre);
+        } else if (p.høyre != null) {
+            p = førstePostorden(p.høyre);
+        }
+        return p;
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        throw new UnsupportedOperationException();
+
     }
 
     public void postorden(Oppgave<? super T> oppgave) {

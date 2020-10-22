@@ -17,4 +17,6 @@ Se oblig-tekst for alle krav, og husk spesielt på følgende:
 Vi har brukt git til å dokumentere arbeidet vårt. Jeg har 16 commits totalt, og hver logg-melding beskriver det jeg har gjort av endringer.
 
 * Oppgave 1: Løste ved å implementere ...
-* Oppgave 2: ...
+* Oppgave 2: Løste ved å bruke en while loop lik som den i inneholder, bare at i "else" statementet så plusser den på <br/>
+1 på count variabelen og går videre til høyre for å finne flere frem til den ikke lenger finner fler. <br/> 
+Går til høyre fordi den leter etter duplicates og tall som er større eller lik verdi ligger alltid til høyre
