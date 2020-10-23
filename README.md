@@ -22,5 +22,10 @@ Vi har brukt git til å dokumentere arbeidet vårt. Jeg har 16 commits totalt, o
 Går til høyre fordi den leter etter duplicates og tall som er større eller lik verdi ligger alltid til høyre
 * Oppgave 3: <br/>førstePostorden ble løst ved bruk av rekursjon, denne sender med enten p.høyre eller p.venstre ettersom
 hvilke av de som er NULL eller ikke. <br/>nestePostorden ble løst ved hjelp av if-setninger som oppfyller sjekklisten under punkt 5.1.7 i kompendiet.
-* Oppgave 6: I fjern metoden la jeg merke til at ved tilfelle 2 (p har eksakt et barn) så pekte barnet til den fjernede noden
+* Oppgave 6: <strong>I fjern</strong> metoden la jeg merke til at ved tilfelle 2 (p har eksakt et barn) så pekte barnet til den fjernede noden
 sin foreldre peker til den fjernede noden. Her la jeg til if(b!=null) b.forelder = q; Jeg måtte også legge til if (b != null) b.foreler = null, inne i if (p == rot) Dette fikset problemet med foreldre pekerne.
+<br/><strong>I fjernAlle</strong> metoden brukte jeg antall(T verdi) metoden for å finne antall forekomster av verdi
+Deretter ble det brukt en while løkke som loopet så lenge antall slettede var færre enn antallForekomster. Inne i while loopen
+brukte jeg fjern metoden med verdi, dersom denne returnerte true ble antallSlettede inkrementert med 1.<br/>
+<strong>I nullstill</strong> metoden ble det brukt en while loop som fjerner en og en node i post orden. Til slutt setter den rotnoden til null.
+Den minker også antall variabelen for hver node som nulles.

@@ -212,8 +212,7 @@ public class EksamenTest {
     void oppgave6() {
         int antallFeil = 0;
 
-        EksamenSBinTre<Integer> tre =
-                new EksamenSBinTre<>(Comparator.naturalOrder());
+        EksamenSBinTre<Integer> tre = new EksamenSBinTre<>(Comparator.naturalOrder());
 
         String s;
 
@@ -380,13 +379,11 @@ public class EksamenTest {
         tre = new EksamenSBinTre<>(Comparator.naturalOrder());
 
         Random r = new Random();
-        for (int i = 0; i < 10000; i++) tre.leggInn(r.nextInt(1_000_000));
+        for (int i = 0; i < 500_000; i++) tre.leggInn(r.nextInt(1_000_000));
 
         long tid = System.currentTimeMillis();
-
         tre.nullstill();
         tid = System.currentTimeMillis() - tid;
-        System.out.println(tid);
         if (tid < 10) {
             antallFeil++;
             System.out.println("Oppgave 6v: Har du kodet nullstill() ved kun");

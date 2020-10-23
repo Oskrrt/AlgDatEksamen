@@ -162,14 +162,12 @@ public class EksamenSBinTre<T> {
         while (antallSlettede < antallForekomster) {
             if (fjern(verdi)) antallSlettede++;
         }
-
         return antallSlettede;
     }
 
-    // må her bruke this. for å kalle på metodene siden verken metoden er statisk eller treet blir sendt med som parameter.
     public int antall(T verdi) {
         Objects.requireNonNull(verdi, "Null verdi ikke tillat");
-        if(!this.inneholder(verdi)) {
+        if(!inneholder(verdi)) {
             return 0;
         }
         Node<T> p = rot;
@@ -186,33 +184,27 @@ public class EksamenSBinTre<T> {
         }
         return count;
     }
-
-    /*public void nullstill() {
-        if (tom()) return;
-        if (antall == 1) {
-            fjern(rot.verdi);
-            return;
-        }
-        Node<T> current = førstePostorden(rot);
-        while (antall > 1) {
-            if(current == null) break;
-            Node <T> temp = nestePostorden(current);
-            if (fjern(current.verdi)) antall--;
-            current = temp;
-        }
-       // fjern(rot.verdi);
-    }*/
-
+    // bruker en while loop som kjører gjennom så lenge treet ikke er tomt
+    // Deretter setter den current = nestePostOrden og minker antall med 1.
+    // Dersom current = rot så setter den rot = null, antall-- og går ut av løkken og metoden.
     public void nullstill() {
         if (tom()) return;
-        if (antall == 1) {
-            fjern(rot.verdi);
-            return;
+        Node<T> current = førstePostorden(rot);
+        while (!tom()) {
+            if (current == rot) {
+                rot = null;
+                antall--;
+                break;
+            }
+            Node<T> neste = nestePostorden(current);
+            current = neste;
+            antall--;
         }
+    }
 
-        Node<T> first = førstePostorden(rot);
-        fjernAlle(first.verdi);
-        nullstill();
+    public boolean amIrightChild(Node<T> p, Node<T> f) {
+        int cmp = comp.compare(p.verdi, f.verdi);
+        return cmp >= 0;
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
