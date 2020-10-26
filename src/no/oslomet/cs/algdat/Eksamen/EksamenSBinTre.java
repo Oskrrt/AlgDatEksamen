@@ -236,9 +236,14 @@ public class EksamenSBinTre<T> {
         }
         return p;
     }
-
+    // Henter noden som kommer først i postorden og looper gjennom. Inne i loopen blir oppgaven utført og p blir til neste node i postorden
     public void postorden(Oppgave<? super T> oppgave) {
-
+        if(tom()) return;
+        Node<T> p = førstePostorden(rot);
+        while (p != null) {
+            oppgave.utførOppgave(p.verdi);
+            p = nestePostorden(p);
+        }
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {

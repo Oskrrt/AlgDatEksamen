@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat.Eksamen;
 
 import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,16 +48,21 @@ public class Main {
         System.out.println(s);
 
 
-
-
-
         EksamenSBinTre<Integer> tre3 = new EksamenSBinTre<>(Comparator.naturalOrder());
 
         for (int verdi : a) tre3.leggInn(verdi);
-
-
         System.out.println("før nullstill: "+tre.toStringPostOrder());
         tre.nullstill();
         System.out.println("etter nullstill: "+tre.toStringPostOrder());
+
+        // oppgave 4
+
+        tre2.postorden(new Oppgave<Integer>() {
+            @Override
+            public void utførOppgave(Integer integer) {
+                System.out.println(integer);
+            }
+        });
+
     }
 }
