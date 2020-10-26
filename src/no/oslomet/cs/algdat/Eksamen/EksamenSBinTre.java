@@ -73,7 +73,6 @@ public class EksamenSBinTre<T> {
             s.add(p.verdi.toString());
             p = nestePostorden(p);
         }
-
         return s.toString();
     }
 
@@ -103,8 +102,10 @@ public class EksamenSBinTre<T> {
         else q.høyre = p;                        // høyre barn til q
 
         antall++;                                // én verdi mer i treet
+        endringer++;
         return true;
     }
+
     // kode kopiert fra kompendie, seksjon 5.2.8 d)
     public boolean fjern(T verdi) {
         if (verdi == null) return false;  // treet har ingen nullverdier
@@ -150,8 +151,8 @@ public class EksamenSBinTre<T> {
             if (s != p) s.venstre = r.høyre;
             else s.høyre = r.høyre;
         }
-
         antall--;   // det er nå én node mindre i treet
+        endringer++;
         return true;
     }
 
@@ -171,7 +172,6 @@ public class EksamenSBinTre<T> {
             return 0;
         }
         Node<T> p = rot;
-
         int count = 0;
         while (p != null) {
             int cmp = comp.compare(verdi, p.verdi);
@@ -184,6 +184,7 @@ public class EksamenSBinTre<T> {
         }
         return count;
     }
+
     // bruker en while loop som kjører gjennom så lenge treet ikke er tomt
     // Deretter setter den current = nestePostOrden og minker antall med 1.
     // Dersom current = rot så setter den rot = null, antall-- og går ut av løkken og metoden.
@@ -200,11 +201,7 @@ public class EksamenSBinTre<T> {
             current = neste;
             antall--;
         }
-    }
-
-    public boolean amIrightChild(Node<T> p, Node<T> f) {
-        int cmp = comp.compare(p.verdi, f.verdi);
-        return cmp >= 0;
+        endringer++;
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
@@ -259,6 +256,7 @@ public class EksamenSBinTre<T> {
         oppgave.utførOppgave(p.verdi);
         postordenRecursive(nestePostorden(p), oppgave);
     }
+
     // kode kopiert fra kompendie Programkode 5.1.6 a). Endringer gjort for å fungere med ArrayDeque istedenfor TabbellKø.
     public ArrayList<T> serialize() {
         ArrayDeque<Node<T>> queue = new ArrayDeque<>();
@@ -272,6 +270,7 @@ public class EksamenSBinTre<T> {
         }
         return serialized;
     }
+
     // oppretter et tre, looper gjennom verdiene i arraylisten og legger inn en og en verdi i treet.
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
         EksamenSBinTre<K> tree = new EksamenSBinTre<>(c);
@@ -280,6 +279,4 @@ public class EksamenSBinTre<T> {
         }
         return tree;
     }
-
-
 } // ObligSBinTre
