@@ -57,7 +57,7 @@ public class Main {
 
         // oppgave 4
 
-        tre2.postorden(new Oppgave<Integer>() {
+        tre.postorden(new Oppgave<Integer>() {
             @Override
             public void utførOppgave(Integer integer) {
                 System.out.println(integer);
