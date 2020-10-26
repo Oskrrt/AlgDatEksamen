@@ -259,9 +259,18 @@ public class EksamenSBinTre<T> {
         oppgave.utførOppgave(p.verdi);
         postordenRecursive(nestePostorden(p), oppgave);
     }
-
+    // kode kopiert fra kompendie Programkode 5.1.6 a). Endringer gjort for å fungere med ArrayDeque istedenfor TabbellKø.
     public ArrayList<T> serialize() {
-        return null;
+        ArrayDeque<Node<T>> queue = new ArrayDeque<>();
+        ArrayList<T> serialized = new ArrayList<>();
+        queue.add(rot);
+        while (!queue.isEmpty()) {
+            Node<T> p = queue.pop();
+            serialized.add(p.verdi);
+            if (p.venstre != null) queue.add(p.venstre);
+            if (p.høyre != null) queue.add( p.høyre);
+        }
+        return serialized;
     }
 
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {

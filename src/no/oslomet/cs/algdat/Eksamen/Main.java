@@ -1,5 +1,6 @@
 package no.oslomet.cs.algdat.Eksamen;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -56,13 +57,17 @@ public class Main {
         System.out.println("etter nullstill: "+tre.toStringPostOrder());
 
         // oppgave 4
-
+        for (int verdi : a) tre.leggInn(verdi);
         tre.postorden(new Oppgave<Integer>() {
             @Override
             public void utførOppgave(Integer integer) {
-                System.out.println(integer);
+                System.out.print(integer+" ");
             }
         });
-
+        System.out.println();
+        ArrayList<Integer> o = tre.serialize();
+        for (Integer l: o) {
+            System.out.print(l+ " ");
+        }
     }
 }
