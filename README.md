@@ -36,3 +36,13 @@ Deretter ble det brukt en while løkke som loopet så lenge antall slettede var 
 brukte jeg fjern metoden med verdi, dersom denne returnerte true ble antallSlettede inkrementert med 1.<br/>
 <strong>I nullstill</strong> metoden ble det brukt en while loop som fjerner en og en node i post orden. Til slutt setter den rotnoden til null.
 Den minker også antall variabelen for hver node som nulles.
+
+# Warnings
+Alle warnings som prosjektet har er der pga. hvordan prosjektet ble satt opp. Jeg har valgt å ikke endre noe på prosjektets
+struktur ut ifra sånn det var når vi fikk oppgaven. Warnings inkluderer: 
+* Access can be package private, denne warningen står på alle metoder som er public.
+* Non-ASCII characters is an identifier, dette er pga. right_child pekeren heter høyre og førstePreOrden metoden.
+* Private field 'endringer' is assigned but never used. Denne variablen blir ikke nevnt i noen av oppgavene.
+* På linje 200 i EksamenSBinTre.java måtte jeg legge til if (current != null) for å ikke få warning om at current might be null.
+Sånn jeg har bygget opp metoden vil den egentlig aldri være null, fordi eneste måten nestePostOrden returnerer null er om rot noden er neste.
+og dette blir allerede håndtert av if (current == rot). 

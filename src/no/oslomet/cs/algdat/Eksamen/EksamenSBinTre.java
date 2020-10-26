@@ -197,8 +197,7 @@ public class EksamenSBinTre<T> {
                 antall--;
                 break;
             }
-            Node<T> neste = nestePostorden(current);
-            current = neste;
+            if (current != null) current = nestePostorden(current);
             antall--;
         }
         endringer++;
