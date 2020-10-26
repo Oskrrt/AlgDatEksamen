@@ -44,7 +44,7 @@ public class Main {
         for (int verdi : c) tre2.leggInn(verdi);
         String s = tre2.toStringPostOrder();
         System.out.println(s);
-        System.out.println(tre2.fjernAlle(1));
+        System.out.println(tre2.fjernAlle(7));
         s = tre2.toStringPostOrder();
         System.out.println(s);
 
@@ -69,5 +69,8 @@ public class Main {
         for (Integer l: o) {
             System.out.print(l+ " ");
         }
+        System.out.println();
+        tre = EksamenSBinTre.deserialize(o, Comparator.naturalOrder());
+
     }
 }

@@ -26,6 +26,9 @@ hvilke av de som er NULL eller ikke. <br/>nestePostorden ble løst ved hjelp av 
 ble oppgaven utført og p ersatttet med nestePostorden(p).<br/> <strong>I postOrdenRecursive</strong> hentet jeg først den førstePostOrden.
 Deretter ble postOrdenRecursive(p, oppgave) kalt på med denne verdien. Denne forstatte å kalle på seg selv med postOrdenRecursive(nestePostOrden(p)),
 helt frem til p == null.
+* Oppgave 5: <strong>I serialize</strong> metoden kopierte jeg kode fra kompendie, Programkode 5.1.6 a) og gjorde nødvendige
+endringer for at det skulle funke med ArrayDeque<> istedenfor TabbellKø<>. Istedenfor å skrive ut p.verdi, la jeg p.verdi inn i et ArrayList<> og til slutt returnerte arraylisten.
+<br/> <strong>I deserialize</strong> brukte jeg en enkel for-each loop til å legge hver verdi fra ArrayListen inn i treet.
 * Oppgave 6: <strong>I fjern</strong> metoden la jeg merke til at ved tilfelle 2 (p har eksakt et barn) så pekte barnet til den fjernede noden
 sin foreldre peker til den fjernede noden. Her la jeg til if(b!=null) b.forelder = q; Jeg måtte også legge til if (b != null) b.foreler = null, inne i if (p == rot) Dette fikset problemet med foreldre pekerne.
 <br/><strong>I fjernAlle</strong> metoden brukte jeg antall(T verdi) metoden for å finne antall forekomster av verdi

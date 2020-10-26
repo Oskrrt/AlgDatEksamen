@@ -272,9 +272,13 @@ public class EksamenSBinTre<T> {
         }
         return serialized;
     }
-
+    // oppretter et tre, looper gjennom verdiene i arraylisten og legger inn en og en verdi i treet.
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        EksamenSBinTre<K> tree = new EksamenSBinTre<>(c);
+        for (K value : data) {
+            tree.leggInn(value);
+        }
+        return tree;
     }
 
 
